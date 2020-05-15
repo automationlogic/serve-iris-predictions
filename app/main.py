@@ -18,7 +18,7 @@ def home():
     print("Making predictions ...")
     predictions = f"{model.predict(iris_features)}"
     real_targets = f"{iris_names}"
-    accuracy = np.mean(predictions == real_targets)
+    accuracy = np.mean(iris_features == iris_names)
     return render_template('home.html', predictions=predictions, real_targets=real_targets, accuracy=accuracy)
 
 @app.errorhandler(500)
