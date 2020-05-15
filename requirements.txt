@@ -1,5 +1,7 @@
 Flask==1.0.2
 google-cloud-storage
+google-cloud-bigquery
+numpy
 gpt_2_simple
 sklearn
 scikit-learn==0.21.2
