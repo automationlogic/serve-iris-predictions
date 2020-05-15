@@ -33,7 +33,7 @@ print("Fetching data from BigQuery ...")
 client = bigquery.Client()
 
 query = (
-    "SELECT * FROM `" + os.environ['PROJECT_ID'] + ".iris.iris`"
+    "SELECT * FROM `" + os.getenv('PROJECT') + ".iris.iris`"
 )
 query_job = client.query(
     query,
