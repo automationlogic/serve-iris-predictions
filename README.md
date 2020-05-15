@@ -1,2 +1,3 @@
-# serve-iris-predictions
-Climate Analytics - Serve Iris Predictions
+# Serve Iris Predictions
+
+Serve Iris Predictions
