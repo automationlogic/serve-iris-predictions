@@ -16,10 +16,11 @@ app = Flask(__name__)
 @app.route('/')
 def home():
     print("Making predictions ...")
-    predictions = f"{model.predict(iris_features)}"
+    predictions = model.predict(iris_features)
+    predictions_f = f"{predictions.tolist()}"
     real_targets = f"{iris_names}"
-    accuracy = np.mean(iris_features == iris_names)
-    return render_template('home.html', predictions=predictions, real_targets=real_targets, accuracy=accuracy)
+    accuracy = np.mean(predictions_f == iris_names)
+    return render_template('home.html', predictions=predictions_f, real_targets=real_targets, accuracy=accuracy)
 
 @app.errorhandler(500)
 def server_error(e):
@@ -30,7 +31,7 @@ print("Preparing..")
 model_name = os.getenv('MODEL_NAME')
 
 print("Fetching data from BigQuery ...")
-client = bigquery.Client()
+client = bigquery.Client(project=os.getenv('PROJECT'))
 
 query = (
     "SELECT * FROM `" + os.getenv('PROJECT') + ".iris.iris`"
